@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+      var a = 20
+      function foo() {
+        var a = 1
+        var obj = {
+          a: 10,
+          c: this.a + 20,
+          fn: function () {
+            return this.a
+          },
+        }
+        return obj.c
+      }
+      console.log(foo())
+      console.log(window.foo())
+
+      console.log("begin")
+      setTimeout(() => {
+        console.log("setTimeout 1")
+        Promise.resolve()
+          .then(() => {
+            console.log("promise 1")
+            setTimeout(() => {
+              console.log("setTimeout2 between promise1&2")
+            })
+          })
+          .then(() => {
+            console.log("promise 2")
+          })
+      }, 0)
+      console.log("end")
+
+      var length = 10
+      function fn() {
+        return this.length + 1
+      }
+      var obj = {
+        length: 5,
+        test1: function () {
+          return fn()
+        },
+      }
+      obj.test2 = fn
+      console.log(obj.test1())
+      console.log(fn() === obj.test2())
+
+      const promise1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("success")
+        }, 1000)
+      })
+      const promise2 = promise1.then(() => {
+        throw new Error("error!!!")
+      })
+
+      console.log("promise1", promise1)
+      console.log("promise2", promise2)
+
+      setTimeout(() => {
+        console.log("promise1", promise1)
+        console.log("promise2", promise2)
+      }, 2000)
+
+      Promise.resolve()
+        .then(() => {
+          console.log(1)
+          return new Error("error!!!")
+        })
+        .then((res) => {
+          console.log(2)
+          console.log("then: ", res)
+        })
+        .catch((err) => {
+          console.log("catch: ", err)
+        })
+      //宏微任务的执行
+      setTimeout(function () {
+        console.log("定时器开始啦")
+      })
+
+      new Promise(function (resolve) {
+        console.log("马上执行for循环啦")
+        for (var i = 0; i < 10000; i++) {
+          i == 99 && resolve()
+        }
+      }).then(function () {
+        console.log("执行then函数啦")
+      })
+
+      console.log("代码执行结束")
+      //字符串
+      var str = "The rain in SPAIN stays mainly in the plain"
+      var n = str.match(/ain/gi)
+      console.log(n)
+      //实现数组的reduce方法
+      Array.prototype.selfReduce = function () {
+        const ary = this
+        const { length } = ary
+        const callback = arguments[0]
+        // 如果有初始值，从数组的第0项开始循环，如果没有初始值，把数组的第0项作为初始值，从数组的第一项开始循环
+        const startIndex = arguments.length >= 2 ? 0 : 1
+        let value = startIndex === 0 ? arguments[1] : ary[0]
+        for (let i = startIndex; i < length; i++) {
+          value = callback(value, ary[i], i, ary)
+        }
+        return value
+      }
+
+      let arr = [1, 2, 3, 4]
+      let result = arr.selfReduce(function (sum, item) {
+        return sum + item
+      }, 10)
+      console.log(result)
+      // var a = Date.now()
+      // console.log(a)
+      //节流函数
+      var throttle = function (func, delay) {
+        var prev = Date.now()
+        console.log(prev)
+        return function () {
+          var context = this //this指向window
+          var args = arguments
+          var now = Date.now()
+          console.log(now)
+          if (now - prev >= delay) {
+            func.apply(context, args)
+            prev = Date.now()
+          }
+        }
+      }
+      function handle() {
+        console.log(Math.random())
+      }
+      window.addEventListener("click", throttle(handle, 1000))
+    </script>
+  </body>
+</html>

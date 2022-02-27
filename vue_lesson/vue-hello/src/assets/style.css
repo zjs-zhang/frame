@@ -1,0 +1,25 @@
+/* 标签初始化 */
+/* 一般来说整体的所有标签初始化不需要做 */
+/* 比如h1的标签初始化在需要的组件内执行 */
+body {
+  margin: 0;
+  /* padding: 0; */
+}
+* {
+  box-sizing: border-box;
+  /* margin: 0; */
+}
+.cf:before,
+.cf:after {
+  content: "";
+  display: block;
+}
+.cf:after {
+  clear: both;
+}
+a {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}

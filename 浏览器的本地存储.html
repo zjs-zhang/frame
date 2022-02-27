@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>存储</button>
+    <h2>浏览器的本地存储</h2>
+    <script>
+      document.querySelector("button").onclick = function () {
+        sessionStorage.setItem("密码", JSON.stringify({ x: 12345 }))
+        sessionStorage.setItem("密码", "12345")
+        localStorage
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h2 {
+        font-size: 14px;
+      }
+      /* #main,
+      #left,
+      #right {
+        height: 200px;
+        float: left;
+      }
+      #main-wrap {
+        margin: 0 100px;
+      }
+      #main {
+        width: 100%;
+        background: pink;
+      }
+      #left {
+        background: blue;
+        width: 100px;
+        margin-left: -100%;
+        position: relative;
+        left: 100px;
+      }
+      #right {
+        width: 100px;
+        margin-right: -100px;
+        background: green;
+      } */
+
+      .left {
+        float: left;
+        height: 20px;
+        width: 100px;
+        outline: red 1px solid;
+      }
+
+      .content {
+        /*overflow: hidden;*/
+        outline: green 1px solid;
+        width: 250px;
+      }
+
+      .content div {
+        outline: blue 1px solid;
+        margin: 5px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <input type="text" />
+    <button>搜索</button>
+    <div class="history">
+      <h2>搜索历史</h2>
+      <p></p>
+    </div>
+    <div id="btn1">1</div>
+    <div id="btn2">2</div> -->
+    <!-- <div id="content">
+      <div id="main-wrap"><div id="main"></div></div>
+      <div id="left"></div>
+      <div id="right"></div>
+    </div> -->
+    <div>
+      <div class="left"></div>
+      <div class="content">
+        <div>AAAAAAAAAAAAAAAAAA</div>
+        <div>BBBBBBBBBBBBBBBBBB</div>
+        <div>CCCCCCCCCCCCCCCCCC</div>
+      </div>
+    </div>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+      // "use strict"
+      //剩余参数
+      // function add(a, b, c, d) {style
+      //   console.log(a + b + c + d)
+      // }
+      // add(1, 2, 3, 4, 5, 6, 7, 8)
+      // function Hero(name, age) {
+      //   this.name = name
+      //   this.age = age
+      // }
+      // Hero.prototype.say = function () {
+      //   console.log("我的名字是" + this.name)
+      // }
+      // const a = new Hero("小红", 20)
+      // a.say()
+      // const b = { ...a }  浅拷贝
+      // console.log(b.name)
+      //对象的扩展
+      // const username = "xiaohong"
+      // const userage = 29
+      // const obj = {
+      //   username,
+      //   //当对象的属性名和作为该对象的属性值的变量名相同时可省略
+      //   userage,
+      //   say() {},
+      //   //方法可省略function
+      // }
+      // console.log(obj)
+      // const a = Symbol("xxx")
+      // console.log(a)
+      //set 数据结构
+      // const ary = new Set([1, 2, 3, 4, 13, 1, 0, 5])
+      // console.log(ary.size)
+      // class 类
+      // class Hero {
+      //   constructor(name, age) {
+      //     this.name = name
+      //     this.age = age
+      //   }
+      //   //除了constructor 函数之外定义的函数都想当于原来prototype内的方法
+      //   say() {
+      //     console.log(this.name)
+      //   }
+      // }
+      // const a = new Hero("xiao", 20)
+      // console.log(a)
+      //搜索历史案列
+      const arr = new Set([])
+      $("button").click(() => {
+        const inputVal = $("input").val()
+        arr.add(inputVal)
+        $("p").text([...arr].join(" "))
+        $("input").val(" ")
+      })
+      console.log($)
+      for (let i = 1; i < 3; i++) {
+        $("#btn" + i).click(function () {
+          //这里的i是循环结束的i，因为监听事件是异步
+          console.log(i) //0 1 2 3 4
+        })
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "books": [
+    {
+      "id": 0,
+      "title": "nam quos ipssssum nobisgggfffccc",
+      "author": "Frederik Lebsack",
+      "importance": 3,
+      "status": "published",
+      "isEdit": false
+    },
+    {
+      "id": 1,
+      "title": "Eosddddhh minima dolores aliquam suscipit quia",
+      "author": "Hollie Wunsch DVM",
+      "importance": 1,
+      "status": "published",
+      "isEdit": false
+    },
+    {
+      "id": 2,
+      "title": "nam quos ipsum nobishhhh",
+      "author": "Frederik Lebsack",
+      "importance": 3,
+      "status": "deleted",
+      "isEdit": false
+    },
+    {
+      "id": 3,
+      "title": "Sit quam inventore aperiam doloremque itaque",
+      "author": "April Runolfsson",
+      "importance": 2,
+      "status": "deleted",
+      "isEdit": false
+    },
+    {
+      "id": 4,
+      "title": "Ut incidunt est sed placeat situuu",
+      "author": "Marjory Willms",
+      "importance": 1,
+      "status": "published",
+      "isEdit": false
+    },
+    {
+      "id": 5,
+      "title": "Qui quasi qui doloremque nisi incidunt",
+      "author": "Hesdi Fisher",
+      "importance": 3,
+      "status": "draft",
+      "isEdit": false
+    },
+    {
+      "id": 6,
+      "title": "Rerum ipsam in sunt quaerat laboriosam",
+      "author": "Arturo Kozey",
+      "importance": 1,
+      "status": "draft",
+      "isEdit": false
+    }
+  ]
+}

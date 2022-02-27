@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+      //原生 ajax
+      //get请求
+      // const xhr = new XMLHttpRequest()
+      // xhr.open("GET", "http://jsonplaceholder.typicode.com/posts", true)
+      // xhr.send();
+      // 监听整个请求过程
+      // xhr.readyState 请求状态 0-4    4请求成功响应就绪
+      // xhr.status 请求状态码  200 ok
+      // xhr.responseText 返回的数据
+      // xhr.onreadystatechange = function () {
+      //   if (xhr.readyState === 4 && xhr.status === 200) {
+      //     // 可以获取后台数据
+      //     console.log(JSON.parse(xhr.responseText));
+      //     // 获取到的数据类似数组字符串   ---> json 串
+      //     // 属性名和属性值必须使用双引号，数字和布尔值不需要，最后一项没有逗号
+      //     // 使用 JSON.parse(json串) 转换
+      //   }
+      // };
+
+      // post 请求 类似登录
+      // ecf878d1-6052-476a-8262-824760c7872b 密码
+      // const xhr = new XMLHttpRequest()
+      // xhr.open("POST", "https://cnodejs.org/api/v1/accesstoken", true)
+      // 发送请求的时候需要传递给后台数据
+      // 但是原生 ajax 不能接收对象为参数，只能接收 json 串,而且得设置请求可以传递 json
+      // 需要使用 xhr.setRequestHeader() 设置请求头
+      // 添加 json 为可传递数据,使用 JSON.stringify 将对象转化为 json 串
+      // xhr.setRequestHeader("Content-type", "application/json")
+      // xhr.send(
+      //   JSON.stringify({ accesstoken: "ecf878d1-6052-476a-8262-824760c7872b" })
+      // )
+      // xhr.onreadystatechange = function () {
+      //   if (xhr.readyState === 4 && xhr.status === 200) {
+      //     console.log(JSON.parse(xhr.responseText))
+      //   }
+      // }
+
+      //jquery ajax
+      // $.get("http://localhost:3008/posts", function (res) {
+      //   console.log(res)
+      // })
+      // $.post(
+      //   "https://cnodejs.org/api/v1/accesstoken",
+      //   { accesstoken: "ecf878d1-6052-476a-8262-824760c7872b" },
+      //   function (res) {
+      //     console.log(res)
+      //   }
+      // )
+      // $.ajax({
+      //   type: "GET",
+      //   // url: "http://localhost:3008/posts?id=1&id=2",
+      //   url: "http://localhost:3008/posts",
+      //   请求参数
+      //   data: {
+      //     _limit: 20,
+      //     _page: 2,
+      //   },
+      //   success(res) {
+      //     console.log(res)
+      //   },
+      //   // 请求失败的回调
+      //   error: function (err) {
+      //     console.log(err);
+      //   },
+      //   // 请求结束的回调
+      //   complete: function () {}
+      //   // 发给后台的内容类型 默认支持 对象类型
+      //   // contentType: ""
+      //   // 请求是否同域 false 代表同域请求  true 代表跨域请求
+      //   // 一般来说后台独立解决了跨域请求的问题，不需要前端进行配置
+      //   // 也有前后端一起解决跨域问题，后台需要前端做一些简单的配置
+      //   // crossDomain: 布尔值
+      //   // headers: 请求头的设置  可能需要配合后台做一些设置
+      // })
+
+      // $.ajax({
+      //   type: "POST",
+      //   url: "https://cnodejs.org/api/v1/accesstoken",
+      //   data: {
+      //     accesstoken: "ecf878d1-6052-476a-8262-824760c7872b",
+      //   },
+      //   success(res) {
+      //     console.log(res)
+      //   },
+      // })
+
+      //同步阻塞    异步非阻塞
+      // promise
+      // let num = 10;
+      // const promise = new Promise(function (resolve, reject) {
+      //   // resolve 函数的意思就是成功的回调函数
+      //   // reject 函数的意思就是失败的回调函数
+      //   console.log("正在干活计数");
+      //   setTimeout(() => {
+      //     num = 99;
+      //     if (num === 100) {
+      //       console.log("活干完了");
+      //       resolve();
+      //     } else {
+      //       console.log("有点问题没做完");
+      //       reject();
+      //     }
+      //   }, 1000);
+      // });
+      // .then 就是传递 resolve 函数
+      // .catch 就是传递 reject 函数
+      // 避免了回调嵌套
+      // promise.then(function () {
+      //   console.log("计数完成了，进行下一步操作");
+      // });
+      // promise.catch(function () {
+      //   console.log("没干完，得继续干");
+      // });
+      // setTimeout(
+      //   (value, value1) => {
+      //     console.log(value, value1);
+      //   },
+      //   1000,
+      //   100000,
+      //   50
+      // );
+
+      // function timeout(ms) {
+      //   return new Promise((resolve, reject) => {
+      //     console.log("异步操作正在执行");
+      //     setTimeout(resolve, ms, "done");
+      //   });
+      // }
+
+      // timeout(1000).then(value => {
+      //   console.log("执行完毕之后做的事");
+      //   console.log(value);
+      // });
+
+      // axios 就是使用 promise 封装了异步操作
+      // axios.get('地址').then(res=>{}).catch(err=>{})
+      // then 是成功函数  res 是成功的返回值  axios 会将后台的数据存储到一个对象的data属性内
+      // catch 是失败函数 err是失败的信息
+      // get
+      axios
+        .get("http://localhost:3008/posts", {
+          params: {
+            _limit: 20,
+          },
+        })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      // post
+      // https://cnodejs.org/api/v1/accesstoken
+      axios
+        .post("https://cnodejs.org/api/v1/accesstoken", {
+          accesstoken: "ecf878d1-6052-476a-8262-824760c7872b",
+        })
+        .then((res) => {
+          console.log(res)
+        })
+      // axios.delete
+      // axios.put
+      // axios.patch
+    </script>
+  </body>
+</html>

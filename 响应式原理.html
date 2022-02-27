@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <input id="input" type="text" />
+      <h2 id="show"></h2>
+    </div>
+    <script>
+      //存取描述符
+      //   var o = {}
+      //   let aValue = 100
+      //   Object.defineProperty(o, "a", {
+      //     get() {
+      //       return aValue
+      //     },
+      //     set(newValue) {
+      //       aValue = newValue
+      //     },
+      //   })
+      //   o.a = 1000
+      //   console.log(o)
+      const data = {
+        text: "",
+      }
+      let inputText = ""
+      const node = document.getElementById("show")
+      Object.defineProperty(data, "text", {
+        get() {
+          return inputText
+        },
+        set(newValue) {
+          inputText = newValue
+          node.innerHTML = newValue
+        },
+      })
+      //   document.getElementById("show").addEventListener('keydown',function(){})
+      document.getElementById("show").onkeydown = function () {
+        data.text = this.value
+        // document.getElementById("show").innerHTML = this.value
+      }
+    </script>
+  </body>
+</html>
